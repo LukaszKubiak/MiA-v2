@@ -1,0 +1,96 @@
+<div class="bs-docs-section" ng-controller="addPointController as vm">
+    <div class="page-header">
+        <h1 class="text-primary">Nowy punkt</h1>
+    </div>
+    <div id="AddForm" class="row">
+        <div class="col-md-6">
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="AddLine" class="col-md-12 control-label" style="text-align:left">Trasa</label>
+                        <div class="col-md-12">
+                            <select class="form-control" id="AddLine">
+                                <option>Trasa Starszoharcerska</option>
+                                <option>Trasa Wędrownicza</option>
+                                <option>Trasa Rowerowa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddPointNr" class="col-md-12 control-label" style="text-align:left">Numer Punktu</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="AddPointNr" placeholder="Numer Punktu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddName" class="col-md-12 control-label" style="text-align:left">Nazwa Punktu</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="AddName" placeholder="Nazwa Punktu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddDesc" class="col-md-12 control-label" style="text-align:left">Opis</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="6" id="AddDesc" placeholder="Opis"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddQuestion" class="col-md-12 control-label" style="text-align:left">Pytanie</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="2" id="AddQuestion" placeholder="Pytanie"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12 control-label" style="text-align:left">Dojście do następnego punktu</label>
+                        <div class="col-md-6">
+                            <label>
+                                <input type="radio" name="AddoptionsRadios" id="Addradio1" value="option1" />
+                                Tekst
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                <input type="radio" name="AddoptionsRadios" id="Addradio2" value="option2" />
+                                Obraz
+                            </label>
+                        </div>
+                        <div id="AddText" class="col-md-12" style="display:none">
+                            <textarea class="form-control" rows="2" id="AddNextPoint" placeholder="Następny punkt"></textarea>
+                        </div>
+                        <div id="AddNextPointBtn" class="col-md-12" style="display:none">
+                            <button id="AddUpload" type="button" class="btn btn-primary" style="margin-top:3px;margin-bottom:10px">Dodaj Obraz</button>
+                        </div>
+                        <div id="AddNextPointImg" class="col-md-12">
+                            <img id="AddPointImg" style="display:none" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddLat" class="col-md-12 control-label" style="text-align:left">Szerekość Geograficzna</label>
+                        <div class="col-md-12">
+                            <input type="number" class="form-control" id="AddLat" placeholder="Szerekość Geograficzna" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AddLong" class="col-md-12 control-label" style="text-align:left">Długość Geograficzna</label>
+                        <div class="col-md-12">
+                            <input type="number" class="form-control" id="AddLong" placeholder="Długość Geograficzna" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-md-offset-3">
+                            <button id="AddReset" type="reset" class="btn btn-warning">Wyczyść</button>
+                        </div>
+                        <div class="col-md-2 col-md-offset-2">
+                            <button id="Save" type="submit" class="btn btn-success">Zapisz</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div id="AddMapDiv" class="col-md-6">
+            <div id="AddMap">
+
+            </div>
+        </div>
+    </div>
+</div>
