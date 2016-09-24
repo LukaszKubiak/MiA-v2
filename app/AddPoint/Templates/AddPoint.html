@@ -1,6 +1,6 @@
 <div class="bs-docs-section" ng-controller="addPointController as vm">
     <div class="page-header">
-        <h1 class="text-primary">Nowy punkt</h1>
+        <h1 class="text-primary header">Nowy punkt</h1>
     </div>
     <div id="AddForm" class="row">
         <div class="col-md-6">
@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label for="AddLine" class="col-md-12 control-label" style="text-align:left">Trasa</label>
                         <div class="col-md-12">
-                            <select class="form-control" id="AddLine">
+                            <select class="form-control" id="AddLine" ng-model="vm.point.line">
                                 <option>Trasa Starszoharcerska</option>
                                 <option>Trasa Wędrownicza</option>
                                 <option>Trasa Rowerowa</option>
@@ -19,61 +19,61 @@
                     <div class="form-group">
                         <label for="AddPointNr" class="col-md-12 control-label" style="text-align:left">Numer Punktu</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" id="AddPointNr" placeholder="Numer Punktu" />
+                            <input type="text" class="form-control" id="AddPointNr" placeholder="Numer Punktu" ng-model="vm.point.id"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="AddName" class="col-md-12 control-label" style="text-align:left">Nazwa Punktu</label>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" id="AddName" placeholder="Nazwa Punktu" />
+                            <input type="text" class="form-control" id="AddName" placeholder="Nazwa Punktu" ng-model="vm.point.name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="AddDesc" class="col-md-12 control-label" style="text-align:left">Opis</label>
                         <div class="col-md-12">
-                            <textarea class="form-control" rows="6" id="AddDesc" placeholder="Opis"></textarea>
+                            <textarea class="form-control" rows="6" id="AddDesc" placeholder="Opis" ng-model="vm.point.name"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="AddQuestion" class="col-md-12 control-label" style="text-align:left">Pytanie</label>
                         <div class="col-md-12">
-                            <textarea class="form-control" rows="2" id="AddQuestion" placeholder="Pytanie"></textarea>
+                            <textarea class="form-control" rows="2" id="AddQuestion" placeholder="Pytanie" ng-model="vm.point.description"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-12 control-label" style="text-align:left">Dojście do następnego punktu</label>
                         <div class="col-md-6">
                             <label>
-                                <input type="radio" name="AddoptionsRadios" id="Addradio1" value="option1" />
+                                <input type="radio" name="AddoptionsRadios" id="Addradio1" value="text" ng-model="vm.point.nextPoint"/>
                                 Tekst
                             </label>
                         </div>
                         <div class="col-md-6">
                             <label>
-                                <input type="radio" name="AddoptionsRadios" id="Addradio2" value="option2" />
+                                <input type="radio" name="AddoptionsRadios" id="Addradio2" value="picture" ng-model="vm.point.nextPoint"/>
                                 Obraz
                             </label>
                         </div>
-                        <div id="AddText" class="col-md-12" style="display:none">
+                        <div id="AddText" class="col-md-12" ng-if="vm.point.nextPoint == 'text'">
                             <textarea class="form-control" rows="2" id="AddNextPoint" placeholder="Następny punkt"></textarea>
                         </div>
-                        <div id="AddNextPointBtn" class="col-md-12" style="display:none">
+                        <div id="AddNextPointBtn" class="col-md-12" ng-if="vm.point.nextPoint == 'picture'">
                             <button id="AddUpload" type="button" class="btn btn-primary" style="margin-top:3px;margin-bottom:10px">Dodaj Obraz</button>
                         </div>
-                        <div id="AddNextPointImg" class="col-md-12">
+                        <div id="AddNextPointImg" class="col-md-12" ng-if="vm.point.nextPoint == 'picture'">
                             <img id="AddPointImg" style="display:none" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="AddLat" class="col-md-12 control-label" style="text-align:left">Szerekość Geograficzna</label>
                         <div class="col-md-12">
-                            <input type="number" class="form-control" id="AddLat" placeholder="Szerekość Geograficzna" />
+                            <input type="number" class="form-control" id="AddLat" placeholder="Szerekość Geograficzna" ng-model="vm.point.latitude"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="AddLong" class="col-md-12 control-label" style="text-align:left">Długość Geograficzna</label>
                         <div class="col-md-12">
-                            <input type="number" class="form-control" id="AddLong" placeholder="Długość Geograficzna" />
+                            <input type="number" class="form-control" id="AddLong" placeholder="Długość Geograficzna" ng-model="vm.point.longitude"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -87,10 +87,10 @@
                 </fieldset>
             </form>
         </div>
-        <div id="AddMapDiv" class="col-md-6">
-            <div id="AddMap">
-
-            </div>
+        <div class="col-sm-6">
+            <ng-map center="52.408603, 16.934039" zoom="15" style="height: 800px" on-click="vm.setPosition(event)">
+                <marker position="{{vm.point.latitude}},{{vm.point.longitude}}" centered="true" ng-if="vm.point.latitude"></marker>
+            </ng-map>
         </div>
     </div>
 </div>
