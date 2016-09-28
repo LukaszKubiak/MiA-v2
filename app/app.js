@@ -7,7 +7,8 @@
                 'restangular',
                 'ui.bootstrap',
                 'dialogs.main',
-                'ngMap'
+                'ngMap',
+                'base64'
             ])
         .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
                 $rootScope.$state = $state;
@@ -15,7 +16,7 @@
             }]
         )
         .config(function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise("/news");
+            $urlRouterProvider.otherwise("/");
         })
         .config(['RestangularProvider', function (RestangularProvider) {
             RestangularProvider.setBaseUrl('https://restgra.herokuapp.com');

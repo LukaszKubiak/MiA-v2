@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title">Nowy użytkownik</h4>
+</div>
+<div class="modal-body">
+    <form>
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label">Imię</label>
+                <input class="form-control" type="text" ng-model="vm.user.FirstName">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nazwisko</label>
+                <input class="form-control" type="text" ng-model="vm.user.LastName">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Login</label>
+                <input class="form-control" type="text" ng-model="vm.user.Login">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Hasło</label>
+                <input class="form-control" type="password" ng-model="vm.user.Password">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$dismiss()">Zamknij</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.addUser()">Dodaj</button>
+</div>
