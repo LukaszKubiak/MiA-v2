@@ -13,8 +13,8 @@
         })
         .controller('mapController', mapController);
 
-    mapController.$inject = ['Users','Localization'];
-    function mapController(Users,Localization) {
+    mapController.$inject = ['Users','Localization', 'Visited'];
+    function mapController(Users,Localization, Visited) {
         var vm = this;
        // vm.users = [];
 
@@ -31,6 +31,9 @@
         function changeUser(){
             Localization.one(vm.user).get().then(function(response){
                 vm.loc = response;
+            })
+            Visited.one(vm.user).get().then(function(response){
+                vm.visited = response;
             })
         }
     }

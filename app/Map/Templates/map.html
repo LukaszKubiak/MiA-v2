@@ -17,6 +17,7 @@
                            center="{{loc.Latitude}},{{loc.Longnitude}}"
                            radius="20">
                     </shape>
+                    <marker ng-repeat="point in vm.visited" position="{{point.Latitude}},{{point.Longnitude}}"></marker>
                 </ng-map>
             </div>
         </div>

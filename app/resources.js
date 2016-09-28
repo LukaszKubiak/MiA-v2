@@ -6,11 +6,18 @@
         .factory('Messages', Messages)
         .factory('Points', Points)
         .factory('Localization', Localization)
+        .factory('Visited', Visited)
         .factory('Users', Users);
 
     Messages.$inject = ['Restangular'];
     function Messages(Restangular) {
         var service = Restangular.service('messages');
+        return service;
+    }
+
+    Visited.$inject = ['Restangular'];
+    function Visited(Restangular) {
+        var service = Restangular.service('visited');
         return service;
     }
 
