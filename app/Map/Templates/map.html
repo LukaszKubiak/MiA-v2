@@ -1,54 +1,24 @@
 <div class="bs-docs-section">
-    <div class="page-header">
-        <h1 class="text-primary">Nowy punkt</h1>
+    <div class="page-header header">
+        <h1 class="text-primary">Mapa</h1>
     </div>
-    <div id="MapForm" class="row">
-        <div class="col-md-6">
-            <form class="form-horizontal">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="MapLine" class="col-md-12 control-label" style="text-align:left">Trasa</label>
-                        <div class="col-md-12">
-                            <select class="form-control" id="MapLine">
-                                <option></option>
-                                <option>Trasa Starszoharcerska</option>
-                                <option>Trasa Wędrownicza</option>
-                                <option>Trasa Rowerowa</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="MapUserSelect" class="form-group" style="display:none">
-                        <label for="MapUser" class="col-md-12 control-label" style="text-align:left">Drużyna</label>
-                        <div class="col-md-12">
-                            <select class="form-control" id="MapUser" placeholder="Drużyna">
-                                <option></option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="MapTable" style="display:none">
-                        <table class="table table-striped table-hover col-md-12">
-                            <thead>
-                            <tr>
-                                <th>Numer Punktu</th>
-                                <th>Nazwa Punktu</th>
-                                <th>Godzina</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </fieldset>
-            </form>
+    <div>
+        <div class="form-group">
+            <label class="col-md-12 control-label" style="text-align:left">Użytkownik</label>
+            <div class="col-md-12">
+                <select class="form-control" ng-model="vm.user" ng-change="vm.changeUser()" style="margin-bottom: 20px">
+                    <option ng-repeat="user in vm.users" value="{{user.UserId}}">{{user.FirstName}} {{user.LastName}}</option>
+                </select>
+                <ng-map center="52.408603, 16.934039" zoom="13" style="height: 500px">
+                    <shape name="circle" ng-repeat="loc in vm.loc" no-watcher="true"
+                           stroke-color="#000000"
+                           stroke-opacity="0.8"
+                           stroke-weight="2"
+                           center="{{loc.Latitude}},{{loc.Longnitude}}"
+                           radius="20">
+                    </shape>
+                </ng-map>
+            </div>
         </div>
     </div>
 </div>

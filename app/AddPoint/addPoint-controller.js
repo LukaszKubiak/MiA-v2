@@ -13,9 +13,10 @@
         })
         .controller('addPointController', addPointController);
 
-    addPointController.$inject = ['NgMap'];
-    function addPointController(NgMap) {
+    addPointController.$inject = ['NgMap','Points'];
+    function addPointController(NgMap, Points) {
         var vm = this;
+        vm.addPoint = addPoint;
         vm.setPosition = setPosition;
         vm.point = {};
         vm.map = {};
@@ -23,10 +24,16 @@
             vm.map = evtMap;
         });
 
+        function addPoint(){
+            Points.one().post(undefined,vm.point).then(function(response){
+                console.info(response);
+            });
+        }
+
         function setPosition(event) {
             vm.map.setCenter(event.latLng);
-            vm.point.latitude = event.latLng.lat();
-            vm.point.longitude = event.latLng.lng();
+            vm.point.lat = event.latLng.lat();
+            vm.point.lng = event.latLng.lng();
         }
 
     }
